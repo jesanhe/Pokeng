@@ -9,13 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'Pokeng';
-  waka: Observable<{}>;
+  pokemonList;
 
-  constructor(pokeService: PokemonService) {
-    pokeService.getAllPokemon().subscribe((data) => console.log(data));
-  }
+  constructor(private pokeService: PokemonService) {}
 
   ngOnInit() {
-
+    this.pokeService.getAllPokemon().subscribe((data) => this.pokemonList = data);
   }
 }
