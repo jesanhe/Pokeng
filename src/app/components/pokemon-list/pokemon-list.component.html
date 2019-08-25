@@ -1,9 +1,13 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10">
-  <div class="row d-flex flex-wrap justify-content-around pt-1">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 w-100">
+  <div class="row w-100 mx-0">
+      <!-- d-flex flex-wrap justify-content-center pt-1 pl-2 -->
     <!-- class="col-12 col-md-6 col-lg-4 col-xl-2" -->
-    <app-pokemon-card
-      *ngFor="let pokemon of pokemonList | async"
-      [pokemon]="pokemon"
-    ></app-pokemon-card>
+    <!-- <div class="d-flex flex-wrap justify-content-start"> -->
+      <app-pokemon-card
+      class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 animated fadeIn slow"
+        *ngFor="let pokemon of pokemonList | async"
+        [pokemon]="pokemon"
+      ></app-pokemon-card>
+    <!-- </div> -->
   </div>
 </main>

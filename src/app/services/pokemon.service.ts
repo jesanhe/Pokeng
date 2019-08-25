@@ -9,6 +9,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from '../models/pokemon';
 import { forkJoin, Observable, Subject } from 'rxjs';
+import { Ability } from '../models/ability';
 
 @Injectable({
   providedIn: 'root',
@@ -34,8 +35,14 @@ export class PokemonService {
     return this.filteredPokemons;
   }
 
-  updatePokemons(pokemons) {
-    this.pokemons = pokemons;
+  getEvolutionChain(name: string): Observable<any> {
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`).pipe(
+      mergeMap((pokemonSpecies: any) => this.http.get(pokemonSpecies.evolution_chain.url))
+    );
+  }
+
+  getAbility(url: string): Observable<any> {
+    return this.http.get(url);
   }
 
   search(term: string) {
@@ -49,10 +56,6 @@ export class PokemonService {
           map((pokemons: Pokemon[]) =>
             pokemons.filter((pokemon) => pokemon.name.indexOf(term.toLowerCase()) !== -1),
           ),
-          // catchError((err) => {
-          //   console.error(err);
-          //   return of('');
-          // }),
         )
         .subscribe((data: Pokemon[]) => this.filteredPokemons.next(data));
     }

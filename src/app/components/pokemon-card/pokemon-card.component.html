@@ -1,13 +1,26 @@
-<div class="card mt-1" style="width: 18rem;">
-  <img [src]="defaultImage" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <div class="d-flex flex-row card-title justify-content-between">
-      <h5>{{pokemonName | titlecase}}</h5>
-      <h5>#{{pokemon.order}}</h5>
+<div class="card mt-1 flex-column justify-content-center">
+  <img
+    [src]="this.pokemon.sprites.front_default"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body p-1">
+    <div class="d-flex flex-row justify-content-between">
+      <span>{{ this.pokemon.name | titlecase }}</span>
+      <span>#{{ pokemon.id }}</span>
     </div>
-    <p class="card-text">
-      Some quick example
-    </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="d-flex card-text justify-content-around p-1">
+      <img
+        *ngFor="let type of pokemon.types"
+        src="assets/Type_{{ type.type.name | titlecase }}.gif"
+      />
+    </div>
+    <div class="py-2 d-flex justify-content-center">
+      <span *ngIf="evolveFrom">Evolve from {{ evolveFrom | titlecase}}</span>
+      <span *ngIf="!evolveFrom">Without previous evolution</span>
+    </div>
+    <button (click)="open()" class="btn btn-outline-info btn-block">
+      Details
+    </button>
   </div>
 </div>

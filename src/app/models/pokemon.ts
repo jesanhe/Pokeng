@@ -7,7 +7,7 @@ export interface Pokemon {
   held_items: any[];
   id: number;
   is_default: boolean;
-  location_area_encounters: string;
+  location_area_encounters: any[];
   moves: Move[];
   name: string;
   order: number;
@@ -17,64 +17,64 @@ export interface Pokemon {
   types: Type[];
   weight: number;
 }
-export interface Ability2 {
+interface Ability2 {
   name: string;
   url: string;
 }
 
-export interface Ability {
+interface Ability {
   ability: Ability2;
   is_hidden: boolean;
   slot: number;
 }
 
-export interface Form {
+interface Form {
   name: string;
   url: string;
 }
 
-export interface Version {
+interface Version {
   name: string;
   url: string;
 }
 
-export interface GameIndice {
+interface GameIndice {
   game_index: number;
   version: Version;
 }
 
-export interface Move2 {
+interface Move2 {
   name: string;
   url: string;
 }
 
-export interface MoveLearnMethod {
+interface MoveLearnMethod {
   name: string;
   url: string;
 }
 
-export interface VersionGroup {
+interface VersionGroup {
   name: string;
   url: string;
 }
 
-export interface VersionGroupDetail {
+interface VersionGroupDetail {
   level_learned_at: number;
   move_learn_method: MoveLearnMethod;
   version_group: VersionGroup;
 }
 
-export interface Move {
+interface Move {
   move: Move2;
   version_group_details: VersionGroupDetail[];
 }
 
-export interface Species {
+interface Species {
   name: string;
   url: string;
 }
 
-export interface Sprites {
+interface Sprites {
   back_default: string;
   back_female?: any;
   back_shiny: string;
@@ -85,23 +85,23 @@ export interface Sprites {
   front_shiny_female?: any;
 }
 
-export interface Stat2 {
+interface Stat2 {
   name: string;
   url: string;
 }
 
-export interface Stat {
+interface Stat {
   base_stat: number;
   effort: number;
   stat: Stat2;
 }
 
-export interface Type2 {
+interface Type2 {
   name: string;
   url: string;
 }
 
-export interface Type {
+interface Type {
   slot: number;
   type: Type2;
 }

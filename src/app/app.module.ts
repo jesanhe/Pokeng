@@ -11,6 +11,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-details.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,16 +23,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PokemonListComponent,
     PokemonCardComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    PokemonDetailsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    PokemonDetailsComponent
+  ]
 })
 export class AppModule { }
