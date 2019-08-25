@@ -1,7 +1,10 @@
-<div class="card" style="width: 18rem;">
+<div class="card mt-1" style="width: 18rem;">
   <img [src]="defaultImage" class="card-img-top" alt="..." />
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <div class="d-flex flex-row card-title justify-content-between">
+      <h5>{{pokemonName | titlecase}}</h5>
+      <h5>#{{pokemon.order}}</h5>
+    </div>
     <p class="card-text">
       Some quick example
     </p>

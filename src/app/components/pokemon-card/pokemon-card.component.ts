@@ -9,11 +9,13 @@ export class PokemonCardComponent implements OnInit {
   @Input() pokemon;
 
   defaultImage: string;
+  pokemonName: string;
 
   constructor() {}
 
   ngOnInit() {
     console.log(this.pokemon);
     this.defaultImage = this.pokemon.sprites.front_default;
+    this.pokemonName = this.pokemon.name;
   }
 }

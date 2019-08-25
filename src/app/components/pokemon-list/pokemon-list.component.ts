@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -6,10 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent implements OnInit {
-  @Input() pokemonList;
+  pokemonList;
 
-  constructor() {}
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {
+    this.pokemonList = this.pokemonService.getPokemons();
   }
 }

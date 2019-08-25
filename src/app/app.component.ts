@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { PokemonService } from './services/pokemon.service';
 import { Observable } from 'rxjs';
 
@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   constructor(private pokeService: PokemonService) {}
 
   ngOnInit() {
-    this.pokeService.getAllPokemon().subscribe((data) => this.pokemonList = data);
+    this.pokemonList = this.pokeService.getPokemons();
+    // .subscribe((data) => this.pokemonList = data);
   }
+
 }

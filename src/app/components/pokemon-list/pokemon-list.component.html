@@ -1,3 +1,9 @@
-<div class="row">
-  <app-pokemon-card class="col-12 col-md-6 col-lg-4 col-xl-2" *ngFor="let pokemon of pokemonList" [pokemon]="pokemon"></app-pokemon-card>
-</div>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10">
+  <div class="row d-flex flex-wrap justify-content-around pt-1">
+    <!-- class="col-12 col-md-6 col-lg-4 col-xl-2" -->
+    <app-pokemon-card
+      *ngFor="let pokemon of pokemonList | async"
+      [pokemon]="pokemon"
+    ></app-pokemon-card>
+  </div>
+</main>
