@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -11,6 +11,8 @@ import { Pokemon } from 'src/app/models/pokemon';
 })
 export class PokemonCardComponent implements OnInit {
   @Input() pokemon: Pokemon;
+
+  @ViewChild('evolutionText', { static: false }) evolutionTextRef: ElementRef;
 
   evolveFrom: string;
 
@@ -27,13 +29,6 @@ export class PokemonCardComponent implements OnInit {
       .getEvolutionChain(this.pokemon.name)
       .subscribe((evolutionChain) => {
         console.log('evolution', evolutionChain);
-        // if(evolutionChain.chain.evolves_to.length > 0) {
-        //   if(evolutionChain.chain.species.name === this.pokemon.name) {
-        //     this.evolveTo = evolutionChain.chain.evolves_to['0'].species.name;
-
-        //   }
-        // }
-        // this.evolveFrom = evolutionChain.chain.evolves_to['0'].species.name;
         this.evolutionChain.push(evolutionChain.chain.species.name);
         if (evolutionChain.chain.evolves_to.length > 0) {
           this.evolutionChain.push(
@@ -44,7 +39,9 @@ export class PokemonCardComponent implements OnInit {
             evolutionChain.chain.evolves_to['0'].species.name ===
             this.pokemon.name
           ) {
-            this.evolveFrom = evolutionChain.chain.species.name;
+            this.evolveFrom = `Evolve from ${this.capitalizeFirstLetter(
+              evolutionChain.chain.species.name,
+            )}`;
           }
 
           if (evolutionChain.chain.evolves_to['0'].evolves_to.length > 0) {
@@ -56,12 +53,17 @@ export class PokemonCardComponent implements OnInit {
               evolutionChain.chain.evolves_to['0'].evolves_to['0'].species
                 .name === this.pokemon.name
             ) {
-              this.evolveFrom =
-                evolutionChain.chain.evolves_to['0'].species.name;
+              this.evolveFrom = `Evolve from ${this.capitalizeFirstLetter(
+                evolutionChain.chain.evolves_to['0'].species.name,
+              )}`;
             }
           }
         }
       });
+  }
+
+  capitalizeFirstLetter(name: string): string {
+    return name.charAt(0).toUpperCase() + name.slice(1);
   }
 
   open() {

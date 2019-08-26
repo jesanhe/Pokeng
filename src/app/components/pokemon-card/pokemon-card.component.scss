@@ -1,7 +1,13 @@
 .card {
   width: 100%;
 
-  .card-body{
-      padding: 0;
+  .card-body {
+    padding: 0;
   }
+}
+
+.fit {
+  font-size: 13px;
+  display: inline-block;
+  white-space: nowrap;
 }

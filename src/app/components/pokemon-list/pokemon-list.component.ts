@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -9,9 +10,17 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokemonListComponent implements OnInit {
   pokemonList;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private alertConfig: NgbAlertConfig,
+  ) {
+    alertConfig.type = 'danger';
+    alertConfig.dismissible = false;
+  }
 
   ngOnInit() {
-    this.pokemonList = this.pokemonService.getPokemons();
+    this.pokemonService
+      .getPokemons()
+      .subscribe((pokemonList) => (this.pokemonList = pokemonList));
   }
 }

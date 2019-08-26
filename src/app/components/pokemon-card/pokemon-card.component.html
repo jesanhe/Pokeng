@@ -1,9 +1,5 @@
 <div class="card mt-1 flex-column justify-content-center">
-  <img
-    [src]="this.pokemon.sprites.front_default"
-    class="card-img-top"
-    alt="..."
-  />
+  <img [src]="this.pokemon.sprites.front_default" class="card-img-top" />
   <div class="card-body p-1">
     <div class="d-flex flex-row justify-content-between">
       <span>{{ this.pokemon.name | titlecase }}</span>
@@ -16,8 +12,9 @@
       />
     </div>
     <div class="py-2 d-flex justify-content-center">
-      <span *ngIf="evolveFrom">Evolve from {{ evolveFrom | titlecase}}</span>
-      <span *ngIf="!evolveFrom">Without previous evolution</span>
+      <span class="fit" id="evolutionText">
+        {{ evolveFrom ? evolveFrom : 'Without previous evolution' }}
+      </span>
     </div>
     <button (click)="open()" class="btn btn-outline-info btn-block">
       Details

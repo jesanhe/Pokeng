@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,7 +15,9 @@ import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-de
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { InfoToastComponent } from './components/info-toast/info-toast.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     PokemonCardComponent,
     HeaderComponent,
     SidebarComponent,
-    PokemonDetailsComponent
+    PokemonDetailsComponent,
+    InfoToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,10 +38,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [
-    PokemonDetailsComponent
-  ]
+  entryComponents: [PokemonDetailsComponent],
 })
-export class AppModule { }
+export class AppModule {}

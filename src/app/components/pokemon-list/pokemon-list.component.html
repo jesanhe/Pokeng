@@ -1,13 +1,14 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 w-100">
-  <div class="row w-100 mx-0">
-      <!-- d-flex flex-wrap justify-content-center pt-1 pl-2 -->
-    <!-- class="col-12 col-md-6 col-lg-4 col-xl-2" -->
-    <!-- <div class="d-flex flex-wrap justify-content-start"> -->
+  <ng-container *ngIf="pokemonList">
+    <ngb-alert class="mt-4" *ngIf="pokemonList.length === 0">
+      We can't find Pokemon following your search criteria
+    </ngb-alert>
+    <div class="row w-100 mx-0">
       <app-pokemon-card
-      class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 animated fadeIn slow"
-        *ngFor="let pokemon of pokemonList | async"
+        class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 animated fadeIn slow"
+        *ngFor="let pokemon of pokemonList"
         [pokemon]="pokemon"
       ></app-pokemon-card>
-    <!-- </div> -->
-  </div>
+    </div>
+  </ng-container>
 </main>
