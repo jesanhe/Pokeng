@@ -1,5 +1,8 @@
 <div class="card mt-1 flex-column justify-content-center">
-  <img [src]="this.pokemon.sprites.front_default" class="card-img-top" />
+  <img
+    [src]="this.pokemon.sprites.front_default | noimage"
+    class="card-img-top"
+  />
   <div class="card-body p-1">
     <div class="d-flex flex-row justify-content-between">
       <span>{{ this.pokemon.name | titlecase }}</span>

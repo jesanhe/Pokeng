@@ -21,6 +21,7 @@ import { InfoToastComponent } from './components/info-toast/info-toast.component
 import { GlobalErrorHandler } from './globalErrorHandler/global-error-handler';
 
 import { ToastrModule } from 'ngx-toastr';
+import { NoimagePipe } from './pipes/noimage.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
     SidebarComponent,
     PokemonDetailsComponent,
     InfoToastComponent,
+    NoimagePipe,
   ],
   imports: [
     BrowserModule,
