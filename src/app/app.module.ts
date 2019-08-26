@@ -18,6 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { InfoToastComponent } from './components/info-toast/info-toast.component';
+import { GlobalErrorHandler } from './globalErrorHandler/global-error-handler';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,8 +40,10 @@ import { InfoToastComponent } from './components/info-toast/info-toast.component
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,

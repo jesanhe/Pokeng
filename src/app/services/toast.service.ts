@@ -9,6 +9,7 @@ export class ToastService {
   constructor() {}
 
   show(textOrTpl: string | TemplateRef<any>, options: any = {}) {
+    console.log('toast toast', textOrTpl);
     this.toasts.push({ textOrTpl, ...options });
   }
 

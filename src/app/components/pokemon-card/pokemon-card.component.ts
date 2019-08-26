@@ -24,11 +24,9 @@ export class PokemonCardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.pokemon);
     this.pokemonService
       .getEvolutionChain(this.pokemon.name)
       .subscribe((evolutionChain) => {
-        console.log('evolution', evolutionChain);
         this.evolutionChain.push(evolutionChain.chain.species.name);
         if (evolutionChain.chain.evolves_to.length > 0) {
           this.evolutionChain.push(

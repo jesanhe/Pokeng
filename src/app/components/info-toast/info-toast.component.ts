@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -7,8 +7,10 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./info-toast.component.scss'],
 })
 export class InfoToastComponent implements OnInit {
-  constructor(toastService: ToastService) {
-    console.log('toast', toastService);
+  constructor(public toastService: ToastService) {}
+
+  isTemplate(toast) {
+    return toast.textOrTpl instanceof TemplateRef;
   }
 
   ngOnInit() {}
