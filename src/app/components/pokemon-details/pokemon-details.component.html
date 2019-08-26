@@ -17,12 +17,12 @@
     <div class="modal-body">
       <div class="pokemon-images">
         <img
-          [src]="pokemon.sprites.front_default"
+          [src]="pokemon.sprites.front_default | noimage"
           alt=""
           class="col-12 col-md-6"
         />
         <img
-          [src]="pokemon.sprites.back_default"
+          [src]="pokemon.sprites.back_default | noimage"
           alt=""
           class="col-12 col-md-6"
         />

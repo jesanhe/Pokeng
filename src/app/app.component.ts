@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from './services/pokemon.service';
-import { Observable } from 'rxjs';
-import { ToastService } from './services/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +10,9 @@ export class AppComponent implements OnInit {
   title = 'Pokeng';
   pokemonList;
 
-  constructor(
-    private pokeService: PokemonService,
-  ) // public toastService: ToastService,
-  {}
+  constructor(private pokeService: PokemonService) {}
 
   ngOnInit() {
     this.pokemonList = this.pokeService.getPokemons();
-    // .subscribe((data) => this.pokemonList = data);
   }
 }

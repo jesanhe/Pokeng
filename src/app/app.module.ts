@@ -17,7 +17,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
-import { InfoToastComponent } from './components/info-toast/info-toast.component';
 import { GlobalErrorHandler } from './globalErrorHandler/global-error-handler';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -31,7 +30,6 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     HeaderComponent,
     SidebarComponent,
     PokemonDetailsComponent,
-    InfoToastComponent,
     NoimagePipe,
   ],
   imports: [

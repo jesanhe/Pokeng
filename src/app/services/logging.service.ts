@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ToastService } from './toast.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({

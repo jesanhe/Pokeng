@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { ToastService } from 'src/app/services/toast.service';
-import {
-  HttpErrorResponse,
-  HttpHeaders,
-  HttpClient,
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -19,7 +12,6 @@ export class SidebarComponent implements OnInit {
   private apiUrl = 'https://localhost:8080/api/users';
   constructor(
     private pokemonService: PokemonService,
-    public toastService: ToastService,
     private http: HttpClient,
     private toastr: ToastrService,
   ) {}
