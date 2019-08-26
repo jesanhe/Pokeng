@@ -1,15 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  map,
-  mergeMap,
-  switchMap,
-  debounceTime,
-  distinctUntilChanged,
-} from 'rxjs/operators';
+import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from '../models/pokemon';
 import { forkJoin, Observable, Subject } from 'rxjs';
-import { Ability } from '../models/ability';
 
 @Injectable({
   providedIn: 'root',
@@ -36,9 +29,13 @@ export class PokemonService {
   }
 
   getEvolutionChain(name: string): Observable<any> {
-    return this.http.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`).pipe(
-      mergeMap((pokemonSpecies: any) => this.http.get(pokemonSpecies.evolution_chain.url))
-    );
+    return this.http
+      .get(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
+      .pipe(
+        mergeMap((pokemonSpecies: any) =>
+          this.http.get(pokemonSpecies.evolution_chain.url),
+        ),
+      );
   }
 
   getAbility(url: string): Observable<any> {
@@ -46,15 +43,58 @@ export class PokemonService {
   }
 
   search(term: string) {
+    const regex = /\?/gm;
     if (term.trim() === '') {
       this.pokemons.subscribe((data: Pokemon[]) =>
         this.filteredPokemons.next(data),
       );
+    } else if (regex.test(term) || term === 'missingno') {
+      console.log('regex');
+      const missingno: Pokemon[] = [
+        {
+          abilities: [
+            {
+              ability: { name: '????', url: '???' },
+              is_hidden: false,
+              slot: 9999,
+            },
+          ],
+          base_experience: 0,
+          forms: [{ name: '???', url: '???' }],
+          game_indices: [
+            { game_index: 0, version: { name: '???', url: '???' } },
+          ],
+          height: 0,
+          held_items: [],
+          id: 0,
+          is_default: false,
+          location_area_encounters: [],
+          moves: [
+            { move: { name: '???', url: '???' }, version_group_details: [] },
+          ],
+          name: 'missingno',
+          order: 0,
+          species: { name: '???', url: '???' },
+          stats: [],
+          sprites: {
+            back_default: 'assets/missingno.png',
+            back_shiny: 'assets/missingno.png',
+            front_default: 'assets/missingno.png',
+            front_shiny: 'assets/missingno.png',
+          },
+          types: [],
+          weight: 0,
+        },
+      ];
+
+      this.filteredPokemons.next(missingno);
     } else {
       this.pokemons
         .pipe(
           map((pokemons: Pokemon[]) =>
-            pokemons.filter((pokemon) => pokemon.name.indexOf(term.toLowerCase()) !== -1),
+            pokemons.filter(
+              (pokemon) => pokemon.name.indexOf(term.toLowerCase()) !== -1,
+            ),
           ),
         )
         .subscribe((data: Pokemon[]) => this.filteredPokemons.next(data));
