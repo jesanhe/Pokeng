@@ -22,6 +22,6 @@ export class ErrorService {
 
   getServerStack(error: HttpErrorResponse): string {
     // handle stack trace
-    return 'stack';
+    return error.statusText;
   }
 }

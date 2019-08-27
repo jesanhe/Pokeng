@@ -3,6 +3,8 @@ import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from '../models/pokemon';
 import { forkJoin, Observable, Subject } from 'rxjs';
+import { Ability } from '../models/ability';
+import { Pokelist } from '../models/Pokelist';
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +18,6 @@ export class PokemonService {
     this.pokemons.subscribe((data: Pokemon[]) =>
       this.filteredPokemons.next(data),
     );
-  }
-
-  getQueries(query: string) {
-    const url = `https://pokeapi.co/api/v2/${query}`;
-
-    return this.http.get(url);
   }
 
   getPokemons() {
@@ -38,8 +34,8 @@ export class PokemonService {
       );
   }
 
-  getAbility(url: string): Observable<any> {
-    return this.http.get(url);
+  getAbility(url: string): Observable<Ability> {
+    return this.http.get<Ability>(url);
   }
 
   search(term: string) {
@@ -101,12 +97,14 @@ export class PokemonService {
   }
 
   getAllPokemon() {
-    return this.getQueries('pokemon/?offset=0&limit=25').pipe(
+    const url = `https://pokeapi.co/api/v2/`;
+
+    return this.http.get<Pokelist>(url + 'pokemon/?offset=0&limit=25').pipe(
       map((data: any) => {
         return data.results;
       }),
       switchMap((data) =>
-        forkJoin(data.map((pokemon) => this.http.get(pokemon.url))),
+        forkJoin(data.map((pokemon) => this.http.get<Pokemon>(pokemon.url))),
       ),
     );
   }
