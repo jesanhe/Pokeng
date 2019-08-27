@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonService } from '../../services/pokemon.service';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

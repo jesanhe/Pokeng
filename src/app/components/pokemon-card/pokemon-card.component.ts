@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
-import { PokemonService } from 'src/app/services/pokemon.service';
-import { Pokemon } from 'src/app/models/pokemon';
+import { PokemonService } from '../../services/pokemon.service';
+import { Pokemon } from '../../models/pokemon';
 
 @Component({
   selector: 'app-pokemon-card',

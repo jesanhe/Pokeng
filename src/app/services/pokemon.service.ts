@@ -49,7 +49,6 @@ export class PokemonService {
         this.filteredPokemons.next(data),
       );
     } else if (regex.test(term) || term === 'missingno') {
-      console.log('regex');
       const missingno: Pokemon[] = [
         {
           abilities: [

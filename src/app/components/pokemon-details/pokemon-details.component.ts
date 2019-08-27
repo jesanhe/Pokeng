@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Pokemon } from 'src/app/models/pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
-import { Ability } from 'src/app/models/ability';
+import { Pokemon } from '../../models/pokemon';
+import { PokemonService } from '../../services/pokemon.service';
+import { Ability } from '../../models/ability';
 
 @Component({
   selector: 'app-pokemon-details',
