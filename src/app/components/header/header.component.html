@@ -1,16 +1,28 @@
-<nav
-  class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow pr-2"
->
-  <span class="navbar-brand col-sm-3 col-md-2 mr-0">Pokedex</span>
-  <input
-    #searchBox
-    (keypress)="omitSpecialChar($event)"
-    (blur)="omitSpecialChar($event)"
-    (paste)="omitSpecialChar($event)"
-    class="form-control form-control-dark w-100"
-    type="text"
-    placeholder="Search"
-    aria-label="Search"
-    (input)="search(searchBox.value)"
-  />
+<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 align-items-start">
+  <div class="d-flex flex-row navbar-brand col-sm-3 col-md-2 mr-0">
+    <div class="glass-button">
+      <div class="reflect"></div>
+    </div>
+    <div class="pl-3 d-flex flex-column w-100">
+      <div class="top-buttons w-100">
+        <div class="top-button-red"></div>
+        <div class="top-button-yellow"></div>
+        <div class="top-button-green"></div>
+      </div>
+      <span class="pt-2 pl-3">Pokedex</span>
+    </div>
+  </div>
+  <div class="w-100 pr-2 pt-3 ml-n5 input-div">
+    <input
+      #searchBox
+      (keypress)="omitSpecialChar($event)"
+      (blur)="omitSpecialChar($event)"
+      (paste)="omitSpecialChar($event)"
+      class="form-control form-control-dark w-100 ml-5 mr-2"
+      type="text"
+      placeholder="Search"
+      aria-label="Search"
+      (input)="search(searchBox.value)"
+    />
+  </div>
 </nav>

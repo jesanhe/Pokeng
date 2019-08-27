@@ -1,19 +1,20 @@
-@import 'abstracts/functions';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+// @import '~bootstrap/scss/reboot';
+
+@import 'themes/pokedex';
+
 @import 'abstracts/mixins';
 @import 'abstracts/placeholders';
 @import 'abstracts/variables';
+@import 'abstracts/functions';
 
 @import 'base/reset';
 @import 'base/typography';
 
 @import 'layout/grid';
 
-@import 'themes/dark';
-
 @import 'shame';
 
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
-@import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/grid';

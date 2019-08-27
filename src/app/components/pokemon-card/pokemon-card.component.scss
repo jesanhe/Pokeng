@@ -1,6 +1,21 @@
+@import '../../../styles/themes/pokedex';
+
 .card {
-  width: 100%;
-  border-radius: 0.5rem;
+  width: 340px;
+  border-radius: 20px;
+
+  color: #fafafa;
+
+  background-color: $secondary;
+  background: linear-gradient($secondary, $primary);
+
+  img.card-img-top {
+    background-image: url('../../../assets/poke-ball-gray-quart.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fafafa;
+  }
 
   .card-body {
     padding: 0;
@@ -11,4 +26,27 @@
   font-size: 13px;
   display: inline-block;
   white-space: nowrap;
+}
+
+.border-screen {
+  .card-img-top {
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #494949;
+    border-width: 2px;
+  }
+  background-color: #b0b0b0;
+  border: 2px;
+  padding: 20px 20px 30px 20px;
+}
+
+.pokemon-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 90%;
+  box-shadow: 0 0 20px #137604 inset, 0px 0px 5px 1px #600707;
+  background-color: #30da0c;
+  background: linear-gradient(#acfb76, #30da0c);
 }

@@ -1,24 +1,108 @@
+@import '../../../styles/themes/pokedex';
+
 .navbar-brand {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    font-size: 1rem;
-    background-color: rgba(0, 0, 0, 0.25);
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
-  }
-  
-  .navbar .form-control {
-    padding: 0.75rem 1rem;
-    border-width: 0;
-    border-radius: 0;
-  }
-  
-  .form-control-dark {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .form-control-dark:focus {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
-  }
+  max-width: 240px;
+  width: 240px;
+  min-width: 240px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  min-height: 100px;
+  font-size: 1rem;
+  background-color: $primary;
+  border-bottom-right-radius: 100px;
+  box-shadow: -10px 8px 1px 3px #600707;
+}
+
+.navbar .form-control {
+  padding: 0.75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.form-control-dark::placeholder {
+  color: #fff;
+}
+
+.glass-button {
+  display: flex;
+  justify-content: center;
+  z-index: 110;
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  background: radial-gradient(#a9e9f7, #1dc6ec);
+  border-radius: 50px;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 5px;
+  box-shadow: 0px 0px 6px 4px #600707;
+}
+
+.reflect {
+  display: flex;
+  z-index: 120;
+  // margin: 3px auto auto 15px;
+  margin-top: 4px;
+  width: 30px;
+  height: 17px;
+  background-color: #a0f2fa;
+  border-radius: 20px 15px;
+}
+
+.top-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 85px;
+  // margin: 12px auto auto 100px;
+}
+
+.top-button-red {
+  z-index: 120;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(#fb7575, #c00d0d);
+  border-radius: 50px;
+  box-shadow: 0px 0px 6px 2px #600707;
+}
+
+.top-button-yellow {
+  z-index: 120;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(#fbfb8a, #ff0);
+  background-color: #a0f2fa;
+  border-radius: 50px;
+  box-shadow: 0px 0px 6px 2px #600707;
+}
+
+.top-button-green {
+  z-index: 120;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(#acfb76, #30da0c);
+  border-radius: 50px;
+  box-shadow: 0px 0px 6px 2px #600707;
+}
+
+.input-div {
+  z-index: 100;
+  background-color: $primary;
+  height: 75px;
+}
+
+nav {
+  z-index: 20;
+  height: 75px;
+  background-color: $primary;
+}
