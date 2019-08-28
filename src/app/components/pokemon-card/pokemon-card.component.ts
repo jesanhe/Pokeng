@@ -4,11 +4,7 @@ import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.comp
 import { PokemonService } from '../../services/pokemon.service';
 import { Pokemon } from '../../models/pokemon';
 
-import {
-  NgbCarousel,
-  NgbSlideEvent,
-  NgbSlideEventSource,
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-pokemon-card',

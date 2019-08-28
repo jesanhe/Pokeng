@@ -8,7 +8,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-details.component';
@@ -20,7 +19,6 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { GlobalErrorHandler } from './globalErrorHandler/global-error-handler';
 
 import { ToastrModule } from 'ngx-toastr';
-import { NoimagePipe } from './pipes/noimage.pipe';
 
 @NgModule({
   declarations: [
@@ -28,9 +26,7 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     PokemonListComponent,
     PokemonCardComponent,
     HeaderComponent,
-    SidebarComponent,
     PokemonDetailsComponent,
-    NoimagePipe,
   ],
   imports: [
     BrowserModule,
