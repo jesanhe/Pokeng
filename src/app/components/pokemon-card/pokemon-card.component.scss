@@ -1,13 +1,55 @@
 @import '../../../styles/themes/pokedex';
+@import '../../../styles/abstracts/variables';
+
+@media (min-width: map-get($grid-breakpoints, 'md')) {
+  .card {
+    flex-direction: column;
+    justify-content: center;
+
+    .card-body {
+      align-items: center;
+      padding: 1rem 0.25rem 0.25rem 0.25rem;
+    }
+
+    .card-footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, 'md') - 1) {
+  .card {
+    flex-direction: row-reverse;
+
+    h3 {
+      font-size: larger;
+    }
+
+    .card-body {
+      align-items: center;
+      padding: 0.25rem;
+      justify-content: space-between;
+    }
+
+    .btn-block {
+      width: 90%;
+    }
+
+    .evolution-text {
+      font-size: x-small;
+    }
+  }
+}
 
 .card {
   width: 340px;
   border-radius: 20px;
-
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   color: #fafafa;
-
   background-color: $cardBg;
-
   top: 0px;
   position: relative;
 
@@ -30,10 +72,6 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-color: #fafafa;
-  }
-
-  .card-body {
-    padding: 0;
   }
 }
 

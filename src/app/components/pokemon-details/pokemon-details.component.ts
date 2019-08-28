@@ -46,12 +46,15 @@ export class PokemonDetailsComponent implements OnInit {
 
   abilities = [];
 
+  carousel: string[] = [];
+
   constructor(
     public activeModal: NgbActiveModal,
     private pokemonService: PokemonService,
   ) {}
 
   ngOnInit() {
+    this.fillCarousel();
     this.pokemon.abilities.map((ability) => {
       this.pokemonService
         .getAbility(ability.ability.url)
@@ -63,5 +66,26 @@ export class PokemonDetailsComponent implements OnInit {
           }),
         );
     });
+  }
+
+  fillCarousel() {
+    this.carousel.push(
+      this.pokemon.sprites.front_default,
+      this.pokemon.sprites.back_default,
+      this.pokemon.sprites.front_shiny,
+      this.pokemon.sprites.back_shiny,
+    );
+    if (this.pokemon.sprites.front_female) {
+      this.carousel.push(this.pokemon.sprites.front_female);
+    }
+    if (this.pokemon.sprites.back_female) {
+      this.carousel.push(this.pokemon.sprites.back_female);
+    }
+    if (this.pokemon.sprites.front_shiny_female) {
+      this.carousel.push(this.pokemon.sprites.front_shiny_female);
+    }
+    if (this.pokemon.sprites.back_shiny_female) {
+      this.carousel.push(this.pokemon.sprites.back_shiny_female);
+    }
   }
 }

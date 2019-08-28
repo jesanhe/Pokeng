@@ -16,16 +16,18 @@
 
     <div class="modal-body">
       <div class="pokemon-images">
-        <img
-          [src]="pokemon.sprites.front_default | noimage"
-          alt=""
-          class="col-12 col-md-6"
-        />
-        <img
-          [src]="pokemon.sprites.back_default | noimage"
-          alt=""
-          class="col-12 col-md-6"
-        />
+        <ngb-carousel
+          interval="1000"
+          #carouselElement
+          [showNavigationArrows]="false"
+          [showNavigationIndicators]="false"
+        >
+          <ng-template ngbSlide *ngFor="let img of carousel; index as i">
+            <div class="picsum-img-wrapper">
+              <img [src]="img" />
+            </div>
+          </ng-template>
+        </ngb-carousel>
       </div>
 
       <div class="d-flex card-text justify-content-center p-1">

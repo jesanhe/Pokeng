@@ -13,3 +13,11 @@ table {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
+
+.picsum-img-wrapper {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 300px;
+  }
+}

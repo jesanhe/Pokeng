@@ -2,7 +2,7 @@
 <div
   (mouseenter)="carouselElement.cycle()"
   (mouseleave)="carouselElement.pause()"
-  class="card p-2 border-0 shadow rounded mt-1 flex-column justify-content-center"
+  class="card py-2 pr-2 p-md-2 border-0 rounded mt-1"
 >
   <div class="border-screen rounded">
     <ngb-carousel
@@ -31,17 +31,14 @@
     <div class="triangle"></div>
     <div class="led-green"></div>
   </div>
-  <div class="d-flex align-items-center flex-column card-body p-1 pt-3">
+  <div class="d-flex flex-column card-body">
     <div class="pokemon-name p-2">
       <h3 class="px-1 d-flex flex-row justify-content-center">
         {{ this.pokemon.name | titlecase }}
       </h3>
     </div>
-    <div class="py-3 d-flex justify-content-center">
-      <span
-        class="card-subtitle text-truncate evolution-text"
-        id="evolutionText"
-      >
+    <div class="py-md-3 d-flex justify-content-center">
+      <span class="text-truncate evolution-text" id="evolutionText">
         {{ evolveFrom ? evolveFrom : 'Without previous evolution' }}
       </span>
     </div>
@@ -52,10 +49,12 @@
         src="assets/Type_{{ type.type.name | titlecase }}.gif"
       />
     </div>
+
+    <button (click)="open()" class="btn btn-info btn-block d-md-none">
+      Details
+    </button>
   </div>
-  <div
-    class="card-footer p-2 d-flex flex-row justify-content-between align-items-center"
-  >
+  <div class="card-footer p-2 d-none d-md-flex">
     <h4 class="pl-2">#{{ pokemon.id }}</h4>
     <button (click)="open()" class="btn btn-info">
       Details

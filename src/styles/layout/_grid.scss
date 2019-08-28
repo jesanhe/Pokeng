@@ -6,8 +6,19 @@ body {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
 
-  background-color: $bgcolor;
-  // background: linear-gradient(#acfb76, #30da0c);
+  // background: #ada996;
+  // background: -webkit-linear-gradient(
+  //   to right,
+  //   #eaeaea,
+  //   #dbdbdb,
+  //   #f2f2f2,
+  //   #ada996
+  // );
+  // background: linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+
+  background: #e1eec3;
+  background: -webkit-linear-gradient(to right, #f05053, #e1eec3);
+  background: linear-gradient(to right, #f05053, #e1eec3);
 }
 
 * {

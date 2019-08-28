@@ -34,6 +34,10 @@
   padding-bottom: 15px;
   font-size: 1rem;
   background-color: $primary;
+
+  span {
+    font-weight: 500;
+  }
 }
 
 .navbar .form-control {
@@ -125,4 +129,5 @@ nav {
   z-index: 20;
   height: 75px;
   background-color: $primary;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
