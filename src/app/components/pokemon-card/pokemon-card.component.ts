@@ -4,6 +4,12 @@ import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.comp
 import { PokemonService } from '../../services/pokemon.service';
 import { Pokemon } from '../../models/pokemon';
 
+import {
+  NgbCarousel,
+  NgbSlideEvent,
+  NgbSlideEventSource,
+} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-pokemon-card',
   templateUrl: './pokemon-card.component.html',
@@ -11,12 +17,13 @@ import { Pokemon } from '../../models/pokemon';
 })
 export class PokemonCardComponent implements OnInit {
   @Input() pokemon: Pokemon;
-
   @ViewChild('evolutionText', { static: false }) evolutionTextRef: ElementRef;
+  @ViewChild('carouselElement', { static: true })
+  carouselElement: NgbCarousel;
 
   evolveFrom: string;
-
   evolutionChain: string[] = [];
+  carousel: string[] = [];
 
   constructor(
     private modalService: NgbModal,
@@ -24,6 +31,8 @@ export class PokemonCardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.carouselElement.pause();
+    this.fillCarousel();
     this.pokemonService
       .getEvolutionChain(this.pokemon.name)
       .subscribe((evolutionChain) => {
@@ -58,6 +67,27 @@ export class PokemonCardComponent implements OnInit {
           }
         }
       });
+  }
+
+  fillCarousel() {
+    this.carousel.push(
+      this.pokemon.sprites.front_default,
+      this.pokemon.sprites.back_default,
+      this.pokemon.sprites.front_shiny,
+      this.pokemon.sprites.back_shiny,
+    );
+    if (this.pokemon.sprites.front_female) {
+      this.carousel.push(this.pokemon.sprites.front_female);
+    }
+    if (this.pokemon.sprites.back_female) {
+      this.carousel.push(this.pokemon.sprites.back_female);
+    }
+    if (this.pokemon.sprites.front_shiny_female) {
+      this.carousel.push(this.pokemon.sprites.front_shiny_female);
+    }
+    if (this.pokemon.sprites.back_shiny_female) {
+      this.carousel.push(this.pokemon.sprites.back_shiny_female);
+    }
   }
 
   capitalizeFirstLetter(name: string): string {
